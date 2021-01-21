@@ -15,7 +15,7 @@ fun CoroutineScope.safeLaunch(block: suspend CoroutineScope.() -> Unit) {
         try {
             block.invoke(this)
         } catch (e: Exception) {
-            println("Deu erro")
+            println("Erro")
         }
     }
 }

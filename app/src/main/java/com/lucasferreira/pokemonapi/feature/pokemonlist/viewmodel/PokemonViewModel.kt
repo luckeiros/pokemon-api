@@ -6,12 +6,12 @@ import com.lucasferreira.pokemonapi.extension.emit
 import com.lucasferreira.pokemonapi.extension.safeLaunch
 import com.lucasferreira.pokemonapi.feature.pokemonlist.repository.PokemonRepository
 import com.lucasferreira.pokemonapi.feature.pokemonlist.viewstate.PokemonListState
-import com.lucasferreira.pokemonapi.feature.pokemonlist.viewstate.PokemonListViewState
+import com.lucasferreira.pokemonapi.feature.pokemonlist.viewstate.PokemonViewState
 import javax.inject.Inject
 
 class PokemonViewModel @Inject constructor(private val repository: PokemonRepository) : ViewModel() {
 
-    val viewState = PokemonListViewState(
+    val viewState = PokemonViewState(
             pokemonListState = MutableLiveData()
     )
 
@@ -25,3 +25,4 @@ class PokemonViewModel @Inject constructor(private val repository: PokemonReposi
         viewState.pokemonListState.emit(PokemonListState.ListDisplayed(pokemons))
     }
 }
+
