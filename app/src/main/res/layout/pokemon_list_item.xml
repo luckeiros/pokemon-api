@@ -27,7 +27,7 @@
             android:fontFamily="sans-serif"
             android:textAllCaps="true"
             android:textColor="@color/black"
-            android:textSize="18sp"
+            android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@+id/imgPokemon"
             app:layout_constraintStart_toEndOf="@+id/imgPokemon"
             app:layout_constraintTop_toTopOf="@+id/imgPokemon"
@@ -35,11 +35,9 @@
 
         <ImageView
             android:id="@+id/imgPokemon"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
