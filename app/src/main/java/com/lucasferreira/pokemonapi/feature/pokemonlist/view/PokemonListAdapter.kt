@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.lucasferreira.pokemonapi.R
 import com.lucasferreira.pokemonapi.model.Pokemon
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.pokemon_list_item.view.*
 
 class PokemonListAdapter(private val pokemon: List<Pokemon>, private val context: Context) :
@@ -24,6 +25,7 @@ class PokemonListAdapter(private val pokemon: List<Pokemon>, private val context
 
     override fun onBindViewHolder(holder: PokemonListViewHolder, position: Int) {
         holder.bindView(pokemon[position])
+        holder.getPokemonImage(pokemon[position])
     }
 
     class PokemonListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -31,6 +33,15 @@ class PokemonListAdapter(private val pokemon: List<Pokemon>, private val context
         fun bindView(pokemon: Pokemon) {
             itemView.tvPokemon.text = pokemon.name
         }
-}
+
+        fun getPokemonImage(pokemon: Pokemon) {
+            val url = pokemon.url.replace("v2", "")
+            val id = url.filter { it.isDigit() }
+            Picasso.get()
+                .load("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png")
+                .into(itemView.imgPokemon)
+        }
+
+    }
 
 }

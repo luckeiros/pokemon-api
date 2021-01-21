@@ -1,17 +1,19 @@
 package com.lucasferreira.pokemonapi.feature.pokemonlist.view
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.lucasferreira.pokemonapi.R
 import com.lucasferreira.pokemonapi.extension.observe
+import com.lucasferreira.pokemonapi.extension.turnGone
+import com.lucasferreira.pokemonapi.extension.turnVisible
 import com.lucasferreira.pokemonapi.feature.pokemonlist.viewmodel.PokemonViewModel
 import com.lucasferreira.pokemonapi.feature.pokemonlist.viewstate.PokemonListState
 import com.lucasferreira.pokemonapi.model.Pokemon
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
+
 
 @AndroidEntryPoint
 class PokemonListActivity : AppCompatActivity() {
@@ -26,10 +28,10 @@ class PokemonListActivity : AppCompatActivity() {
         pokemonViewModel.loadPokemons()
     }
 
-    private fun observeStates(){
-        with(pokemonViewModel.viewState){
-            observe(pokemonListState){
-                when(it){
+    private fun observeStates() {
+        with(pokemonViewModel.viewState) {
+            observe(pokemonListState) {
+                when (it) {
                     is PokemonListState.Loading -> setLoading()
                     is PokemonListState.ListDisplayed -> showPokemons(it.pokemonList)
                     is PokemonListState.Error -> showError()
@@ -43,14 +45,15 @@ class PokemonListActivity : AppCompatActivity() {
     }
 
     private fun showPokemons(pokemonList: List<Pokemon>) {
-        pbPokemonList.visibility = View.GONE
-        rvPokemon.visibility = View.VISIBLE
+        pbPokemonList.turnGone()
+        rvPokemon.turnVisible()
 
         rvPokemon.adapter = PokemonListAdapter(pokemonList, this)
     }
 
     private fun setLoading() {
-        rvPokemon.visibility = View.GONE
-        pbPokemonList.visibility = View.VISIBLE
+        rvPokemon.turnGone()
+        pbPokemonList.turnVisible()
     }
+
 }
