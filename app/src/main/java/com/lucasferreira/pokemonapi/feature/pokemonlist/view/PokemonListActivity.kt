@@ -11,7 +11,7 @@ import com.lucasferreira.pokemonapi.feature.pokemonlist.viewmodel.PokemonViewMod
 import com.lucasferreira.pokemonapi.feature.pokemonlist.viewstate.PokemonListState
 import com.lucasferreira.pokemonapi.model.Pokemon
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_pokemon_list.*
 import javax.inject.Inject
 
 
@@ -22,7 +22,7 @@ class PokemonListActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_pokemon_list)
 
         observeStates()
         pokemonViewModel.loadPokemons()
