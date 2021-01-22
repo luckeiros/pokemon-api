@@ -63,6 +63,9 @@ dependencies {
     //Picasso
     implementation "com.squareup.picasso:picasso:$picasso_version"
 
+    //Paging
+    implementation "androidx.paging:paging-runtime-ktx:3.0.0-alpha12"
+
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
