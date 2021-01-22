@@ -18,7 +18,7 @@ class PokemonListModule {
     @Singleton
     fun provideRetrofit(): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("https://pokeapi.co/api/v2/")
+            .baseUrl(Endpoint.POKEMON_BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }

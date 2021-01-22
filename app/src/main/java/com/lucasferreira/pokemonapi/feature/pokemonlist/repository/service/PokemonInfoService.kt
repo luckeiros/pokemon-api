@@ -4,9 +4,9 @@ import com.lucasferreira.pokemonapi.di.Endpoint
 import com.lucasferreira.pokemonapi.model.PokemonResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Url
 
-interface PokemonService {
-    @GET(Endpoint.POKEMON_ENDPOINT)
-    suspend fun getPokemon(@Path("id") id: String) : PokemonResponse
-
+interface PokemonInfoService {
+    @GET(Endpoint.POKEMON_INFO_ENDPOINT)
+    suspend fun getPokemonInfo(@Path("id") id: String) : PokemonResponse
 }
