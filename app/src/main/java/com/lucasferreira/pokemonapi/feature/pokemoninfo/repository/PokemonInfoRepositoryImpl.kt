@@ -13,6 +13,6 @@ class PokemonInfoRepositoryImpl @Inject constructor(private val retrofit: Retrof
     override suspend fun getPokemonInfo(id: String): List<PokemonInfo> = withContext(Dispatchers.IO){
         val service = retrofit.create(PokemonInfoService::class.java)
 
-        service.getPokemonInfo().results
+        service.getPokemonInfo(id).results
     }
 }
