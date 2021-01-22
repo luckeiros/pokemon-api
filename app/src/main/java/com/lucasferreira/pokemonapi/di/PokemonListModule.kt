@@ -1,7 +1,9 @@
 package com.lucasferreira.pokemonapi.di
 
+import com.lucasferreira.pokemonapi.feature.pokemoninfo.repository.PokemonInfoRepository
 import com.lucasferreira.pokemonapi.feature.pokemonlist.repository.PokemonRepository
 import com.lucasferreira.pokemonapi.feature.pokemonlist.repository.PokemonRepositoryImpl
+import com.lucasferreira.pokemonapi.feature.pokemoninfo.repository.PokemonInfoRepositoryImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -27,4 +29,11 @@ class PokemonListModule {
     fun providePokemonRepository(retrofit: Retrofit): PokemonRepository {
         return PokemonRepositoryImpl(retrofit)
     }
+
+    @Provides
+    fun providePokemonInfoRepository(retrofit: Retrofit): PokemonInfoRepository {
+        return PokemonInfoRepositoryImpl(retrofit)
+    }
+
+
 }

@@ -7,6 +7,6 @@ import retrofit2.http.Path
 
 interface PokemonService {
     @GET(Endpoint.POKEMON_ENDPOINT)
-    suspend fun getPokemon(@Path("id") id: String) : PokemonResponse
+    suspend fun getPokemon() : PokemonResponse
 
 }

@@ -1,18 +1,11 @@
-package com.lucasferreira.pokemonapi.feature.pokemonlist.view
+package com.lucasferreira.pokemonapi
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.HandlerThread
-import android.os.Looper
-import com.lucasferreira.pokemonapi.R
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
-import java.util.*
+import com.lucasferreira.pokemonapi.feature.pokemonlist.view.PokemonListActivity
 import java.util.concurrent.Executors
 import java.util.concurrent.TimeUnit
-import java.util.logging.Handler
 
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
