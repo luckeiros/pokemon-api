@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">PokemonAPI</string>
+    <string name="abilities">Abilities</string>
+    <string name="types">Types</string>
+    <string name="forms">Forms</string>
+    <string name="height">Height</string>
+    <string name="weight">Weight</string>
 </resources>

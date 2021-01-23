@@ -10,5 +10,5 @@ class PokemonInfoViewState(
 sealed class PokemonInfoState {
     object Loading: PokemonInfoState()
     object Error: PokemonInfoState()
-    data class DataDisplayed(val pokemonList: List<PokemonInfo>): PokemonInfoState()
+    data class DataDisplayed(val pokemonInfo: PokemonInfo): PokemonInfoState()
 }

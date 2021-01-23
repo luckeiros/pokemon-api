@@ -1,5 +1,6 @@
 package com.lucasferreira.pokemonapi.feature.pokemonlist.view
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -8,6 +9,7 @@ import com.lucasferreira.pokemonapi.R
 import com.lucasferreira.pokemonapi.extension.observe
 import com.lucasferreira.pokemonapi.extension.turnGone
 import com.lucasferreira.pokemonapi.extension.turnVisible
+import com.lucasferreira.pokemonapi.feature.pokemoninfo.view.PokemonInfoActivity
 import com.lucasferreira.pokemonapi.feature.pokemonlist.listener.PaginationScrollListener
 import com.lucasferreira.pokemonapi.feature.pokemonlist.viewmodel.PokemonViewModel
 import com.lucasferreira.pokemonapi.feature.pokemonlist.viewstate.PokemonListState
@@ -29,6 +31,14 @@ class PokemonListActivity : AppCompatActivity() {
         configureRecyclerViewListener()
         observeStates()
         pokemonViewModel.loadPokemons()
+        openAnotherActivity()
+    }
+
+    private fun openAnotherActivity(){
+        icLogo.setOnClickListener {
+            val intent = Intent(this, PokemonInfoActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun configureRecyclerViewListener() {

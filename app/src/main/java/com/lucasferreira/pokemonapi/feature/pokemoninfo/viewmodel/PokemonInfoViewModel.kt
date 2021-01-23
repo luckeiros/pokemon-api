@@ -16,11 +16,13 @@ class PokemonInfoViewModel @Inject constructor(private val repository: PokemonIn
         pokemonInfoState = MutableLiveData()
     )
 
-    fun loadPokemonInfo() = safeLaunch {
+    fun loadPokemonInfo(id: Int) = safeLaunch {
         viewState.pokemonInfoState.emit(PokemonInfoState.Loading)
+        getPokemonInfo(id)
     }
 
-    suspend fun getPokemonInfo(id: String){
-        val pokemons = repository.getPokemonInfo(id)
+    suspend fun getPokemonInfo(id: Int){
+        val pokemonInfo = repository.getPokemonInfo(id)
+        viewState.pokemonInfoState.emit(PokemonInfoState.DataDisplayed(pokemonInfo))
     }
 }

@@ -1,5 +1,5 @@
 package com.lucasferreira.pokemonapi.model
 
-data class Types(
-    val type: Type
+data class Type(
+    val name: String
 )

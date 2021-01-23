@@ -1,6 +1,5 @@
 package com.lucasferreira.pokemonapi.feature.pokemonlist.repository
 
-import com.lucasferreira.pokemonapi.model.Pokemon
 import com.lucasferreira.pokemonapi.model.PokemonResponse
 
 interface PokemonRepository {
