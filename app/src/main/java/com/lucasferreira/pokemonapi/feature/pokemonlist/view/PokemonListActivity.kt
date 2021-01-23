@@ -3,10 +3,12 @@ package com.lucasferreira.pokemonapi.feature.pokemonlist.view
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.lucasferreira.pokemonapi.R
 import com.lucasferreira.pokemonapi.extension.observe
 import com.lucasferreira.pokemonapi.extension.turnGone
 import com.lucasferreira.pokemonapi.extension.turnVisible
+import com.lucasferreira.pokemonapi.feature.pokemonlist.listener.PaginationScrollListener
 import com.lucasferreira.pokemonapi.feature.pokemonlist.viewmodel.PokemonViewModel
 import com.lucasferreira.pokemonapi.feature.pokemonlist.viewstate.PokemonListState
 import com.lucasferreira.pokemonapi.model.Pokemon
@@ -24,8 +26,22 @@ class PokemonListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pokemon_list)
 
+        configureRecyclerViewListener()
         observeStates()
         pokemonViewModel.loadPokemons()
+    }
+
+    private fun configureRecyclerViewListener() {
+        rvPokemon.addOnScrollListener(object : PaginationScrollListener(rvPokemon.layoutManager as LinearLayoutManager) {
+
+            override fun isLoading(): Boolean {
+                return pokemonViewModel.isLoading
+            }
+
+            override fun loadMoreItems() {
+                pokemonViewModel.loadMorePokemons()
+            }
+        })
     }
 
     private fun observeStates() {
@@ -38,6 +54,12 @@ class PokemonListActivity : AppCompatActivity() {
                 }
             }
         }
+
+
+        observe(pokemonViewModel.pagination) {
+            val adapter = rvPokemon.adapter as PokemonListAdapter
+            adapter.addData(it)
+        }
     }
 
     private fun showError() {
@@ -48,7 +70,7 @@ class PokemonListActivity : AppCompatActivity() {
         pbPokemonList.turnGone()
         rvPokemon.turnVisible()
 
-        rvPokemon.adapter = PokemonListAdapter(pokemonList, this)
+        rvPokemon.adapter = PokemonListAdapter(pokemonList.toMutableList(), this)
     }
 
     private fun setLoading() {

@@ -7,22 +7,38 @@ import com.lucasferreira.pokemonapi.extension.safeLaunch
 import com.lucasferreira.pokemonapi.feature.pokemonlist.repository.PokemonRepository
 import com.lucasferreira.pokemonapi.feature.pokemonlist.viewstate.PokemonListState
 import com.lucasferreira.pokemonapi.feature.pokemonlist.viewstate.PokemonViewState
+import com.lucasferreira.pokemonapi.model.Pokemon
 import javax.inject.Inject
 
 class PokemonViewModel @Inject constructor(private val repository: PokemonRepository) : ViewModel() {
 
     val viewState = PokemonViewState(
-            pokemonListState = MutableLiveData()
+        pokemonListState = MutableLiveData()
     )
+
+    val pagination = MutableLiveData<List<Pokemon>>()
+    var isLoading: Boolean = false
+
+    lateinit var nextUrl: String
 
     fun loadPokemons() = safeLaunch {
         viewState.pokemonListState.emit(PokemonListState.Loading)
         getPokemons()
     }
 
+    fun loadMorePokemons() = safeLaunch {
+        isLoading = true
+        val pokemons = repository.getMorePokemons(nextUrl)
+        isLoading = false
+
+        nextUrl = pokemons.next
+        pagination.emit(pokemons.results)
+    }
+
     private suspend fun getPokemons(){
         val pokemons = repository.getPokemons()
-        viewState.pokemonListState.emit(PokemonListState.ListDisplayed(pokemons))
+        nextUrl = pokemons.next
+        viewState.pokemonListState.emit(PokemonListState.ListDisplayed(pokemons.results))
     }
 }
 

@@ -10,13 +10,20 @@ import com.lucasferreira.pokemonapi.model.Pokemon
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.pokemon_list_item.view.*
 
-class PokemonListAdapter(private val pokemon: List<Pokemon>, private val context: Context) :
+class PokemonListAdapter(private val pokemon: MutableList<Pokemon>, private val context: Context) :
     RecyclerView.Adapter<PokemonListAdapter.PokemonListViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PokemonListViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.pokemon_list_item, parent, false)
 
         return PokemonListViewHolder(view)
+    }
+
+    fun addData(pokemons: List<Pokemon>) {
+        val size = this.pokemon.size
+        this.pokemon.addAll(pokemons)
+        val sizeNew = this.pokemon.size
+        notifyItemRangeChanged(size, sizeNew)
     }
 
     override fun getItemCount(): Int {
