@@ -13,6 +13,7 @@ import com.lucasferreira.pokemonapi.feature.pokemoninfo.viewstate.PokemonInfoSta
 import com.lucasferreira.pokemonapi.model.PokemonInfo
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_pokemon_info.*
+import java.util.*
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -65,7 +66,7 @@ class PokemonInfoActivity : AppCompatActivity() {
         pokemonInfo.abilities.map { it.ability.name }.forEach {
             pokemonAbilitiesGroup.addView(
                 Chip(this, null, R.attr.chipStyle).apply {
-                    text = it
+                    text = it.capitalize(Locale.getDefault())
                     isClickable = false
                 }
             )
@@ -77,7 +78,7 @@ class PokemonInfoActivity : AppCompatActivity() {
         pokemonInfo.types.map { it.type.name }.forEach {
             pokemonTypesGroup.addView(
                 Chip(this, null, R.attr.chipStyle).apply {
-                    text = it
+                    text = it.capitalize(Locale.getDefault())
                     isClickable = false
                 }
             )
@@ -89,7 +90,7 @@ class PokemonInfoActivity : AppCompatActivity() {
         pokemonInfo.forms.map { it.name }.forEach {
             pokemonFormsGroup.addView(
                 Chip(this, null, R.attr.chipStyle).apply {
-                    text = it
+                    text = it.capitalize(Locale.getDefault())
                     isClickable = false
                 }
             )

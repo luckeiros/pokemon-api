@@ -9,6 +9,7 @@ import com.lucasferreira.pokemonapi.R
 import com.lucasferreira.pokemonapi.model.Pokemon
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.pokemon_list_item.view.*
+import java.util.*
 
 class PokemonListAdapter(private val pokemon: MutableList<Pokemon>, private val context: Context) :
     RecyclerView.Adapter<PokemonListAdapter.PokemonListViewHolder>() {
@@ -38,7 +39,7 @@ class PokemonListAdapter(private val pokemon: MutableList<Pokemon>, private val 
     class PokemonListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         fun bindView(pokemon: Pokemon) {
-            itemView.tvPokemon.text = pokemon.name
+            itemView.tvPokemon.text = pokemon.name.capitalize(Locale.getDefault())
         }
 
         fun getPokemonImage(pokemon: Pokemon) {
