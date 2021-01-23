@@ -1,8 +1,13 @@
 <resources>
     <string name="app_name">PokemonAPI</string>
+
+    <!-- Pokemon Info -->
     <string name="abilities">Abilities</string>
     <string name="types">Types</string>
     <string name="forms">Forms</string>
     <string name="height">Height</string>
     <string name="weight">Weight</string>
+
+    <!-- Content Description -->
+    <string name="pokemon_logo">Logo</string>
 </resources>
