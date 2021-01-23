@@ -21,14 +21,13 @@ class PokemonInfoActivity : AppCompatActivity() {
 
     @Inject
     lateinit var pokemonInfoViewModel: PokemonInfoViewModel
-    val idMock: Int = 3
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pokemon_info)
 
         observeStates()
-        pokemonInfoViewModel.loadPokemonInfo(idMock)
+        pokemonInfoViewModel.loadPokemonInfo(getId().toInt())
     }
 
     private fun observeStates() {
@@ -118,4 +117,10 @@ class PokemonInfoActivity : AppCompatActivity() {
             }
         )
     }
+
+    private fun getId(): String{
+        val id: String = intent.getStringExtra("id").toString()
+        return id
+    }
+
 }

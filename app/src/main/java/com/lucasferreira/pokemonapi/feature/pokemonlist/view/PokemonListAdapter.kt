@@ -10,8 +10,9 @@ import com.lucasferreira.pokemonapi.model.Pokemon
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.pokemon_list_item.view.*
 import java.util.*
+import javax.inject.Inject
 
-class PokemonListAdapter(private val pokemon: MutableList<Pokemon>, private val context: Context) :
+class PokemonListAdapter @Inject constructor(private val pokemon: MutableList<Pokemon>, private val context: Context, private val onPokemonClickedListener: (Pokemon) -> Unit) :
     RecyclerView.Adapter<PokemonListAdapter.PokemonListViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PokemonListViewHolder {
@@ -32,13 +33,17 @@ class PokemonListAdapter(private val pokemon: MutableList<Pokemon>, private val 
     }
 
     override fun onBindViewHolder(holder: PokemonListViewHolder, position: Int) {
-        holder.bindView(pokemon[position])
+        holder.bindView(pokemon[position], onPokemonClickedListener)
         holder.getPokemonImage(pokemon[position])
     }
 
-    class PokemonListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class PokemonListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        fun bindView(pokemon: Pokemon) {
+        fun bindView(pokemon: Pokemon, onPokemonClickedListener: (Pokemon) -> Unit) {
+            itemView.setOnClickListener {
+                onPokemonClickedListener(pokemon)
+            }
+
             itemView.tvPokemon.text = pokemon.name.capitalize(Locale.getDefault())
         }
 

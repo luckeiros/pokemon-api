@@ -23,6 +23,7 @@ import javax.inject.Inject
 class PokemonListActivity : AppCompatActivity() {
     @Inject
     lateinit var pokemonViewModel: PokemonViewModel
+    lateinit var id: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,14 +32,6 @@ class PokemonListActivity : AppCompatActivity() {
         configureRecyclerViewListener()
         observeStates()
         pokemonViewModel.loadPokemons()
-        openAnotherActivity()
-    }
-
-    private fun openAnotherActivity(){
-        icLogo.setOnClickListener {
-            val intent = Intent(this, PokemonInfoActivity::class.java)
-            startActivity(intent)
-        }
     }
 
     private fun configureRecyclerViewListener() {
@@ -80,12 +73,20 @@ class PokemonListActivity : AppCompatActivity() {
         pbPokemonList.turnGone()
         rvPokemon.turnVisible()
 
-        rvPokemon.adapter = PokemonListAdapter(pokemonList.toMutableList(), this)
+        rvPokemon.adapter = PokemonListAdapter(pokemonList.toMutableList(), this, onPokemonClickedListener)
     }
 
     private fun setLoading() {
         rvPokemon.turnGone()
         pbPokemonList.turnVisible()
+    }
+
+    private val onPokemonClickedListener: (Pokemon) -> Unit = {
+        val url = it.url.replace("v2", "")
+        id = url.filter { it.isDigit() }
+        val intent = Intent(this, PokemonInfoActivity::class.java)
+        intent.putExtra("id", id)
+        startActivity(intent)
     }
 
 }
