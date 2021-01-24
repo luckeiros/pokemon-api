@@ -45,7 +45,7 @@ class PokemonInfoActivity : AppCompatActivity() {
     }
 
     private fun showError() {
-        Toast.makeText(this, "Erro ao carregar informações", Toast.LENGTH_LONG).show()
+        Toast.makeText(this, "Error on loading information", Toast.LENGTH_LONG).show()
     }
 
     private fun showPokemonInfo(pokemonInfo: PokemonInfo) {
@@ -62,8 +62,8 @@ class PokemonInfoActivity : AppCompatActivity() {
         configureStatsRecyclerView(pokemonInfo.stats)
     }
 
-    private fun configureStatsRecyclerView(stats: List<Stats>){
-        rvPokemonStats.adapter = PokemonInfoAdapter(stats.toMutableList(), this)
+    private fun configureStatsRecyclerView(stats: List<Stats>) {
+        rvPokemonStats.adapter = PokemonStatsAdapter(stats.toMutableList(), this)
     }
 
     private fun setLoading() {
@@ -125,7 +125,7 @@ class PokemonInfoActivity : AppCompatActivity() {
         showPokemonImage(getId(), imgPokemonArtwork, this)
     }
 
-    private fun showPokemonName(pokemonInfo: PokemonInfo){
+    private fun showPokemonName(pokemonInfo: PokemonInfo) {
         tvPokemonName.text = pokemonInfo.name.capitalize(Locale.getDefault())
     }
 

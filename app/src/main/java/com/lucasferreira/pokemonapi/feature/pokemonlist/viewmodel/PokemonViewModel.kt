@@ -19,7 +19,7 @@ class PokemonViewModel @Inject constructor(private val repository: PokemonReposi
     val pagination = MutableLiveData<List<Pokemon>>()
     var isLoading: Boolean = false
 
-    lateinit var nextUrl: String
+    private lateinit var nextUrl: String
 
     fun loadPokemons() = safeLaunch {
         viewState.pokemonListState.emit(PokemonListState.Loading)
@@ -41,9 +41,5 @@ class PokemonViewModel @Inject constructor(private val repository: PokemonReposi
         viewState.pokemonListState.emit(PokemonListState.ListDisplayed(pokemons.results))
     }
 
-    private suspend fun getPokemonImage(){
-        val pokemonImage = repository.getPokemons()
-
-    }
 }
 

@@ -1,21 +1,15 @@
 package com.lucasferreira.pokemonapi.feature.pokemonlist.view
 
 import android.content.Context
-import android.transition.Scene
-import android.transition.TransitionManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.Animation
-import android.view.animation.LinearInterpolator
-import android.view.animation.RotateAnimation
 import androidx.recyclerview.widget.RecyclerView
 import com.lucasferreira.pokemonapi.R
 import com.lucasferreira.pokemonapi.extension.showPokemonImage
 import com.lucasferreira.pokemonapi.model.Pokemon
 import kotlinx.android.synthetic.main.pokemon_list_item.view.*
 import java.util.*
-import java.util.logging.Handler
 import javax.inject.Inject
 
 

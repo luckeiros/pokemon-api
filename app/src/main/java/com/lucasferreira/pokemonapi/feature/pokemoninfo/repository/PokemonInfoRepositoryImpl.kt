@@ -10,9 +10,8 @@ import javax.inject.Inject
 class PokemonInfoRepositoryImpl @Inject constructor(private val retrofit: Retrofit) :
     PokemonInfoRepository {
 
-    override suspend fun getPokemonInfo(id: Int): PokemonInfo = withContext(Dispatchers.IO){
+    override suspend fun getPokemonInfo(id: Int): PokemonInfo = withContext(Dispatchers.IO) {
         val service = retrofit.create(PokemonInfoService::class.java)
-
         service.getPokemonInfo(id)
     }
 }

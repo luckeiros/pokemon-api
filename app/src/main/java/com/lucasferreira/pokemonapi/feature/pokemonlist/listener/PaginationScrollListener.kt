@@ -3,7 +3,8 @@ package com.lucasferreira.pokemonapi.feature.pokemonlist.listener
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
-abstract class PaginationScrollListener(var layoutManager: LinearLayoutManager) : RecyclerView.OnScrollListener() {
+abstract class PaginationScrollListener(private var layoutManager: LinearLayoutManager) :
+    RecyclerView.OnScrollListener() {
 
     abstract fun isLoading(): Boolean
 

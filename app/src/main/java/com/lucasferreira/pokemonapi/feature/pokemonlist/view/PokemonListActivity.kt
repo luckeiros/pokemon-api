@@ -35,7 +35,8 @@ class PokemonListActivity : AppCompatActivity() {
     }
 
     private fun configureRecyclerViewListener() {
-        rvPokemon.addOnScrollListener(object : PaginationScrollListener(rvPokemon.layoutManager as LinearLayoutManager) {
+        rvPokemon.addOnScrollListener(object :
+            PaginationScrollListener(rvPokemon.layoutManager as LinearLayoutManager) {
 
             override fun isLoading(): Boolean {
                 return pokemonViewModel.isLoading
@@ -66,14 +67,15 @@ class PokemonListActivity : AppCompatActivity() {
     }
 
     private fun showError() {
-        Toast.makeText(this, "Erro ao carregar lista", Toast.LENGTH_LONG).show()
+        Toast.makeText(this, "Error on loading information", Toast.LENGTH_LONG).show()
     }
 
     private fun showPokemons(pokemonList: List<Pokemon>) {
         pbPokemonList.turnGone()
         rvPokemon.turnVisible()
 
-        rvPokemon.adapter = PokemonListAdapter(pokemonList.toMutableList(), this, onPokemonClickedListener)
+        rvPokemon.adapter =
+            PokemonListAdapter(pokemonList.toMutableList(), this, onPokemonClickedListener)
     }
 
     private fun setLoading() {

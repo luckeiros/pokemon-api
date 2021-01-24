@@ -11,13 +11,14 @@ import kotlinx.android.synthetic.main.pokemon_stats_list_item.view.*
 import java.util.*
 import javax.inject.Inject
 
-class PokemonInfoAdapter @Inject constructor(
+class PokemonStatsAdapter @Inject constructor(
     private val stats: List<Stats>,
     private val context: Context
-) : RecyclerView.Adapter<PokemonInfoAdapter.PokemonInfoViewHolder>() {
+) : RecyclerView.Adapter<PokemonStatsAdapter.PokemonInfoViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PokemonInfoViewHolder {
-        val view = LayoutInflater.from(context).inflate(R.layout.pokemon_stats_list_item, parent, false)
+        val view =
+            LayoutInflater.from(context).inflate(R.layout.pokemon_stats_list_item, parent, false)
 
         return PokemonInfoViewHolder(view)
     }

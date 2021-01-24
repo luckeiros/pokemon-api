@@ -21,7 +21,7 @@ class PokemonInfoViewModel @Inject constructor(private val repository: PokemonIn
         getPokemonInfo(id)
     }
 
-    suspend fun getPokemonInfo(id: Int){
+    private suspend fun getPokemonInfo(id: Int) {
         val pokemonInfo = repository.getPokemonInfo(id)
         viewState.pokemonInfoState.emit(PokemonInfoState.DataDisplayed(pokemonInfo))
     }

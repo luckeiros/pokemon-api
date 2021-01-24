@@ -4,10 +4,9 @@ import androidx.annotation.MainThread
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Observer
 
 fun <T> LifecycleOwner.observe(liveData: LiveData<T>, action: (t: T) -> Unit) {
-    liveData.observe(this, Observer { it?.let { action(it)} })
+    liveData.observe(this, { it?.let { action(it)} })
 }
 
 @MainThread
