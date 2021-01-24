@@ -19,7 +19,7 @@
         android:id="@+id/icBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="@dimen/medium_margin"
         android:background="@null"
         android:padding="@dimen/medium_margin"
         android:src="@drawable/ic_arrow_back"
@@ -31,7 +31,7 @@
         android:id="@+id/toolbarTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="@dimen/medium_margin"
         android:fontFamily="sans-serif-medium"
         android:text="@string/pokemon_info"
         android:textColor="@color/black"
@@ -53,14 +53,14 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/contentLayout"
             android:layout_width="match_parent"
-            android:background="@color/light_gray_color"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="@color/light_gray_color">
 
             <ImageView
                 android:id="@+id/imgPokemonArtwork"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="@dimen/medium_margin"
                 android:contentDescription="@string/pokemon_image"
                 android:elevation="3dp"
                 android:src="@mipmap/ic_launcher"
@@ -74,7 +74,7 @@
                 android:layout_height="wrap_content"
                 android:elevation="3dp"
                 android:fontFamily="sans-serif-black"
-                android:textColor="@color/purple_color"
+                android:textColor="@color/black"
                 android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="@+id/imgPokemonArtwork"
                 app:layout_constraintStart_toStartOf="@+id/imgPokemonArtwork"
@@ -97,12 +97,12 @@
                     android:layout_height="wrap_content"
                     android:elevation="3dp"
                     android:fontFamily="sans-serif-black"
-                    android:text="18.35Kg "
-                    android:textColor="@color/yellow_color"
+                    android:textColor="@color/purple_color"
                     android:textSize="18sp"
                     app:layout_constraintEnd_toEndOf="@+id/tvWeightTitle"
                     app:layout_constraintStart_toStartOf="@+id/tvWeightTitle"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="18.35Kg " />
 
                 <TextView
                     android:id="@+id/tvWeightTitle"
@@ -110,8 +110,8 @@
                     android:layout_height="@dimen/match_constraint"
                     android:layout_marginStart="16dp"
                     android:elevation="3dp"
-                    android:text="WEIGHT"
-                    android:textColor="@color/purple_color"
+                    android:text="@string/weight"
+                    android:textColor="@color/black"
                     android:textSize="14sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
@@ -122,12 +122,12 @@
                     android:layout_height="wrap_content"
                     android:elevation="3dp"
                     android:fontFamily="sans-serif-black"
-                    android:text="1.13m"
-                    android:textColor="@color/yellow_color"
+                    android:textColor="@color/purple_color"
                     android:textSize="18sp"
                     app:layout_constraintBottom_toTopOf="@+id/tvHeightTitle"
                     app:layout_constraintEnd_toEndOf="@+id/tvHeightTitle"
-                    app:layout_constraintStart_toStartOf="@+id/tvHeightTitle" />
+                    app:layout_constraintStart_toStartOf="@+id/tvHeightTitle"
+                    tools:text="1.13m" />
 
                 <TextView
                     android:id="@+id/tvHeightTitle"
@@ -135,8 +135,8 @@
                     android:layout_height="@dimen/match_constraint"
                     android:layout_marginEnd="16dp"
                     android:elevation="3dp"
-                    android:text="HEIGHT"
-                    android:textColor="@color/purple_color"
+                    android:text="@string/height_title"
+                    android:textColor="@color/black"
                     android:textSize="14sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent" />
@@ -188,7 +188,7 @@
                 android:layout_width="@dimen/match_constraint"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                app:cardBackgroundColor="@color/purple_color"
+                app:cardBackgroundColor="@color/light_yellow_color"
                 app:cardElevation="2dp"
                 app:layout_constraintEnd_toEndOf="@+id/cardInfoLayout"
                 app:layout_constraintStart_toStartOf="@+id/cardInfoLayout"
@@ -204,9 +204,9 @@
                         android:id="@+id/pokemonAbilitiesTitle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/abilities"
                         android:fontFamily="sans-serif-medium"
-                        android:textColor="@color/white" />
+                        android:text="@string/abilities"
+                        android:textColor="@color/black" />
 
                     <com.google.android.material.chip.ChipGroup
                         android:id="@+id/pokemonAbilitiesGroup"
@@ -222,8 +222,8 @@
                 android:id="@+id/pokemonTypesCard"
                 android:layout_width="@dimen/match_constraint"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                app:cardBackgroundColor="@color/purple_color"
+                android:layout_marginTop="@dimen/medium_margin"
+                app:cardBackgroundColor="@color/light_yellow_color"
                 app:cardElevation="2dp"
                 app:layout_constraintEnd_toEndOf="@+id/pokemonAbilitiesCard"
                 app:layout_constraintStart_toStartOf="@+id/pokemonAbilitiesCard"
@@ -239,9 +239,9 @@
                         android:id="@+id/pokemonTypesTitle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/types"
                         android:fontFamily="sans-serif-medium"
-                        android:textColor="@color/white" />
+                        android:text="@string/types"
+                        android:textColor="@color/black" />
 
                     <com.google.android.material.chip.ChipGroup
                         android:id="@+id/pokemonTypesGroup"
@@ -257,9 +257,9 @@
                 android:id="@+id/pokemonFormsCard"
                 android:layout_width="@dimen/match_constraint"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="@dimen/medium_margin"
                 android:layout_marginBottom="16dp"
-                app:cardBackgroundColor="@color/purple_color"
+                app:cardBackgroundColor="@color/light_yellow_color"
                 app:cardElevation="2dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/pokemonTypesCard"
@@ -278,14 +278,13 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-medium"
                         android:text="@string/forms"
-                        android:textColor="@color/white" />
+                        android:textColor="@color/black" />
 
                     <com.google.android.material.chip.ChipGroup
                         android:id="@+id/pokemonFormsGroup"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/small_margin">
-                    </com.google.android.material.chip.ChipGroup>
+                        android:layout_marginTop="@dimen/small_margin" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
         </androidx.constraintlayout.widget.ConstraintLayout>

@@ -22,11 +22,11 @@ fun View.turnGone() {
 }
 
 fun Chip.chipBackground(context: Context){
-    this.chipBackgroundColor = ColorStateList.valueOf(ContextCompat.getColor(context, R.color.light_yellow_color))
+    this.chipBackgroundColor = ColorStateList.valueOf(ContextCompat.getColor(context, R.color.black))
 }
 
 fun Chip.chipTextColor(context: Context){
-    this.setTextColor(ColorStateList.valueOf(ContextCompat.getColor(context, R.color.purple_color)))
+    this.setTextColor(ColorStateList.valueOf(ContextCompat.getColor(context, R.color.white)))
 }
 
 fun showPokemonImage(id: Int, img: ImageView, context: Context){

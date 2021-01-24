@@ -15,11 +15,11 @@
         android:padding="12dp">
 
         <ImageView
-            android:contentDescription="@string/pokemon_image"
             android:id="@+id/imgPokemon"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginStart="@dimen/large_margin"
+            android:contentDescription="@string/pokemon_image"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintDimensionRatio="1"
             app:layout_constraintStart_toStartOf="parent"
