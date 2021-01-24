@@ -62,12 +62,12 @@
                 android:elevation="3dp"
                 android:layout_marginTop="@dimen/medium_margin"
                 android:src="@mipmap/ic_launcher"
-                app:layout_constraintEnd_toEndOf="@+id/infoLayout"
-                app:layout_constraintStart_toStartOf="@+id/infoLayout"
-                app:layout_constraintTop_toTopOf="@+id/infoLayout" />
+                app:layout_constraintEnd_toEndOf="@+id/cardInfoLayout"
+                app:layout_constraintStart_toStartOf="@+id/cardInfoLayout"
+                app:layout_constraintTop_toTopOf="@+id/cardInfoLayout" />
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/infoLayout"
+                android:id="@+id/cardInfoLayout"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
                 android:layout_marginStart="32dp"
@@ -98,7 +98,7 @@
                 app:cardElevation="2dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/infoLayout"
+                app:layout_constraintTop_toBottomOf="@id/cardInfoLayout"
                 tools:layout_editor_absoluteY="56dp">
 
                 <LinearLayout

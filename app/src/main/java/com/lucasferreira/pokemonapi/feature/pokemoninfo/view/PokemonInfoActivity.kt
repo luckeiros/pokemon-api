@@ -25,7 +25,7 @@ class PokemonInfoActivity : AppCompatActivity() {
         setContentView(R.layout.activity_pokemon_info)
 
         observeStates()
-        pokemonInfoViewModel.loadPokemonInfo(getId().toInt())
+        pokemonInfoViewModel.loadPokemonInfo(getId())
     }
 
     private fun observeStates() {
@@ -126,8 +126,9 @@ class PokemonInfoActivity : AppCompatActivity() {
         )
     }
 
-    private fun getId(): String{
-        return intent.getStringExtra("id").toString()
+    private fun getId(): Int{
+       val id = intent.getStringExtra("id").toString()
+        return id.toInt()
     }
 
 }

@@ -84,6 +84,10 @@ class PokemonListActivity : AppCompatActivity() {
     private val onPokemonClickedListener: (Pokemon) -> Unit = {
         val url = it.url.replace("v2", "")
         id = url.filter { it.isDigit() }
+        openPokemonInfoActivity(id)
+    }
+
+    private fun openPokemonInfoActivity(id: String) {
         val intent = Intent(this, PokemonInfoActivity::class.java)
         intent.putExtra("id", id)
         startActivity(intent)
