@@ -1,18 +1,29 @@
 package com.lucasferreira.pokemonapi.feature.pokemonlist.view
 
 import android.content.Context
+import android.transition.Scene
+import android.transition.TransitionManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.Animation
+import android.view.animation.LinearInterpolator
+import android.view.animation.RotateAnimation
 import androidx.recyclerview.widget.RecyclerView
 import com.lucasferreira.pokemonapi.R
+import com.lucasferreira.pokemonapi.extension.showPokemonImage
 import com.lucasferreira.pokemonapi.model.Pokemon
-import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.pokemon_list_item.view.*
 import java.util.*
+import java.util.logging.Handler
 import javax.inject.Inject
 
-class PokemonListAdapter @Inject constructor(private val pokemon: MutableList<Pokemon>, private val context: Context, private val onPokemonClickedListener: (Pokemon) -> Unit) :
+
+class PokemonListAdapter @Inject constructor(
+    private val pokemon: MutableList<Pokemon>,
+    private val context: Context,
+    private val onPokemonClickedListener: (Pokemon) -> Unit
+) :
     RecyclerView.Adapter<PokemonListAdapter.PokemonListViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PokemonListViewHolder {
@@ -50,9 +61,8 @@ class PokemonListAdapter @Inject constructor(private val pokemon: MutableList<Po
         fun getPokemonImage(pokemon: Pokemon) {
             val url = pokemon.url.replace("v2", "")
             val id = url.filter { it.isDigit() }
-            Picasso.get()
-                .load("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png")
-                .into(itemView.imgPokemon)
+
+            showPokemonImage(id.toInt(), itemView.imgPokemon, context)
         }
 
     }

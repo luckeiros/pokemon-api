@@ -1,5 +1,6 @@
 package com.lucasferreira.pokemonapi.feature.pokemoninfo.view
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -8,9 +9,12 @@ import com.lucasferreira.pokemonapi.R
 import com.lucasferreira.pokemonapi.extension.*
 import com.lucasferreira.pokemonapi.feature.pokemoninfo.viewmodel.PokemonInfoViewModel
 import com.lucasferreira.pokemonapi.feature.pokemoninfo.viewstate.PokemonInfoState
+import com.lucasferreira.pokemonapi.feature.pokemonlist.view.PokemonListActivity
 import com.lucasferreira.pokemonapi.model.PokemonInfo
+import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_pokemon_info.*
+import kotlinx.android.synthetic.main.pokemon_list_item.view.*
 import java.util.*
 import javax.inject.Inject
 
@@ -26,6 +30,7 @@ class PokemonInfoActivity : AppCompatActivity() {
 
         observeStates()
         pokemonInfoViewModel.loadPokemonInfo(getId())
+        returnToPokemonListActivity()
     }
 
     private fun observeStates() {
@@ -52,6 +57,7 @@ class PokemonInfoActivity : AppCompatActivity() {
         showForms(pokemonInfo)
         showHeight(pokemonInfo)
         showWeight(pokemonInfo)
+        showPokemonImage()
     }
 
     private fun setLoading() {
@@ -126,9 +132,19 @@ class PokemonInfoActivity : AppCompatActivity() {
         )
     }
 
-    private fun getId(): Int{
-       val id = intent.getStringExtra("id").toString()
+    private fun showPokemonImage() {
+        showPokemonImage(getId(), imgPokemonArtwork, this)
+    }
+
+    private fun getId(): Int {
+        val id = intent.getStringExtra("id").toString()
         return id.toInt()
+    }
+
+    private fun returnToPokemonListActivity() {
+        icBack.setOnClickListener {
+            finish()
+        }
     }
 
 }

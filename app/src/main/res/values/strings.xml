@@ -14,4 +14,7 @@
 
     <!-- Toolbar -->
     <string name="pokemon_info">Pokemon specifications</string>
+
+    <!-- General -->
+    <string name="png_extension">.png</string>
 </resources>

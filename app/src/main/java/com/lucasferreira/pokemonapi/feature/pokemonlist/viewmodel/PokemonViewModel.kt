@@ -40,5 +40,10 @@ class PokemonViewModel @Inject constructor(private val repository: PokemonReposi
         nextUrl = pokemons.next
         viewState.pokemonListState.emit(PokemonListState.ListDisplayed(pokemons.results))
     }
+
+    private suspend fun getPokemonImage(){
+        val pokemonImage = repository.getPokemons()
+
+    }
 }
 

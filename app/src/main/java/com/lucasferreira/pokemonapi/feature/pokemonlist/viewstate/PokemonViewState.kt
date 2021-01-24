@@ -2,6 +2,7 @@ package com.lucasferreira.pokemonapi.feature.pokemonlist.viewstate
 
 import androidx.lifecycle.LiveData
 import com.lucasferreira.pokemonapi.model.Pokemon
+import com.lucasferreira.pokemonapi.model.PokemonInfo
 
 class PokemonViewState(
     val pokemonListState: LiveData<PokemonListState>
