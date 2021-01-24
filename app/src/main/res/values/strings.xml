@@ -10,4 +10,8 @@
 
     <!-- Content Description -->
     <string name="pokemon_logo">Logo</string>
+    <string name="pokemon_image">Pokemon image</string>
+
+    <!-- Toolbar -->
+    <string name="pokemon_info">Pokemon specifications</string>
 </resources>
