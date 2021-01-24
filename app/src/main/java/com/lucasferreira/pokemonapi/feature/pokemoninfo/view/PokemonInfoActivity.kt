@@ -77,7 +77,7 @@ class PokemonInfoActivity : AppCompatActivity() {
             pokemonAbilitiesGroup.addView(
                 Chip(this, null, R.attr.chipStyle).apply {
                     this.chipBackground(this@PokemonInfoActivity)
-                    this.chipTextColor()
+                    this.chipTextColor(this@PokemonInfoActivity)
                     text = it.capitalize(Locale.getDefault())
                     isClickable = false
                 }
@@ -91,7 +91,7 @@ class PokemonInfoActivity : AppCompatActivity() {
             pokemonTypesGroup.addView(
                 Chip(this, null, R.attr.chipStyle).apply {
                     this.chipBackground(this@PokemonInfoActivity)
-                    this.chipTextColor()
+                    this.chipTextColor(this@PokemonInfoActivity)
                     text = it.capitalize(Locale.getDefault())
                     isClickable = false
                 }
@@ -105,7 +105,7 @@ class PokemonInfoActivity : AppCompatActivity() {
             pokemonFormsGroup.addView(
                 Chip(this, null, R.attr.chipStyle).apply {
                     this.chipBackground(this@PokemonInfoActivity)
-                    this.chipTextColor()
+                    this.chipTextColor(this@PokemonInfoActivity)
                     text = it.capitalize(Locale.getDefault())
                     isClickable = false
                 }
@@ -114,29 +114,11 @@ class PokemonInfoActivity : AppCompatActivity() {
     }
 
     private fun showHeight(pokemonInfo: PokemonInfo) {
-        pokemonHeight.removeAllViews()
-        val height = pokemonInfo.height.toString()
-        pokemonHeight.addView(
-            Chip(this, null, R.attr.chipStyle).apply {
-                this.chipBackground(this@PokemonInfoActivity)
-                this.chipTextColor()
-                text = height
-                isClickable = false
-            }
-        )
+        tvHeight.text = pokemonInfo.height.formatDecimeter()
     }
 
     private fun showWeight(pokemonInfo: PokemonInfo) {
-        pokemonWeight.removeAllViews()
-        val weight = pokemonInfo.weight.toString()
-        pokemonWeight.addView(
-            Chip(this, null, R.attr.chipStyle).apply {
-                this.chipBackground(this@PokemonInfoActivity)
-                this.chipTextColor()
-                text = weight
-                isClickable = false
-            }
-        )
+        tvWeight.text = pokemonInfo.weight.formatKilogram()
     }
 
     private fun showPokemonImage() {

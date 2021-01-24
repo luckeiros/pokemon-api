@@ -16,7 +16,7 @@
         android:layout_height="wrap_content"
         android:background="?attr/selectableItemBackground"
         android:clickable="false"
-        android:padding="@dimen/medium_margin">
+        android:padding="@dimen/small_margin">
 
         <TextView
             android:id="@+id/tvPokemonStat"
