@@ -1,13 +1,13 @@
 package com.lucasferreira.pokemonapi.feature.pokemoninfo.view
 
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.chip.Chip
 import com.lucasferreira.pokemonapi.R
-import com.lucasferreira.pokemonapi.extension.observe
-import com.lucasferreira.pokemonapi.extension.turnGone
-import com.lucasferreira.pokemonapi.extension.turnVisible
+import com.lucasferreira.pokemonapi.extension.*
 import com.lucasferreira.pokemonapi.feature.pokemoninfo.viewmodel.PokemonInfoViewModel
 import com.lucasferreira.pokemonapi.feature.pokemoninfo.viewstate.PokemonInfoState
 import com.lucasferreira.pokemonapi.model.PokemonInfo
@@ -65,6 +65,8 @@ class PokemonInfoActivity : AppCompatActivity() {
         pokemonInfo.abilities.map { it.ability.name }.forEach {
             pokemonAbilitiesGroup.addView(
                 Chip(this, null, R.attr.chipStyle).apply {
+                    this.chipBackground(this@PokemonInfoActivity)
+                    this.chipTextColor()
                     text = it.capitalize(Locale.getDefault())
                     isClickable = false
                 }
@@ -77,6 +79,8 @@ class PokemonInfoActivity : AppCompatActivity() {
         pokemonInfo.types.map { it.type.name }.forEach {
             pokemonTypesGroup.addView(
                 Chip(this, null, R.attr.chipStyle).apply {
+                    this.chipBackground(this@PokemonInfoActivity)
+                    this.chipTextColor()
                     text = it.capitalize(Locale.getDefault())
                     isClickable = false
                 }
@@ -89,6 +93,8 @@ class PokemonInfoActivity : AppCompatActivity() {
         pokemonInfo.forms.map { it.name }.forEach {
             pokemonFormsGroup.addView(
                 Chip(this, null, R.attr.chipStyle).apply {
+                    this.chipBackground(this@PokemonInfoActivity)
+                    this.chipTextColor()
                     text = it.capitalize(Locale.getDefault())
                     isClickable = false
                 }
@@ -101,6 +107,8 @@ class PokemonInfoActivity : AppCompatActivity() {
         val height = pokemonInfo.height.toString()
         pokemonHeight.addView(
             Chip(this, null, R.attr.chipStyle).apply {
+                this.chipBackground(this@PokemonInfoActivity)
+                this.chipTextColor()
                 text = height
                 isClickable = false
             }
@@ -112,6 +120,8 @@ class PokemonInfoActivity : AppCompatActivity() {
         val weight = pokemonInfo.weight.toString()
         pokemonWeight.addView(
             Chip(this, null, R.attr.chipStyle).apply {
+                this.chipBackground(this@PokemonInfoActivity)
+                this.chipTextColor()
                 text = weight
                 isClickable = false
             }
