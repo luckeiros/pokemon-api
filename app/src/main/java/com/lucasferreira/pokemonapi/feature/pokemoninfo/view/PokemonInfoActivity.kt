@@ -1,6 +1,5 @@
 package com.lucasferreira.pokemonapi.feature.pokemoninfo.view
 
-import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -9,9 +8,8 @@ import com.lucasferreira.pokemonapi.R
 import com.lucasferreira.pokemonapi.extension.*
 import com.lucasferreira.pokemonapi.feature.pokemoninfo.viewmodel.PokemonInfoViewModel
 import com.lucasferreira.pokemonapi.feature.pokemoninfo.viewstate.PokemonInfoState
-import com.lucasferreira.pokemonapi.feature.pokemonlist.view.PokemonListActivity
 import com.lucasferreira.pokemonapi.model.PokemonInfo
-import com.squareup.picasso.Picasso
+import com.lucasferreira.pokemonapi.model.Stats
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_pokemon_info.*
 import kotlinx.android.synthetic.main.pokemon_list_item.view.*
@@ -43,6 +41,7 @@ class PokemonInfoActivity : AppCompatActivity() {
                 }
             }
         }
+
     }
 
     private fun showError() {
@@ -51,6 +50,7 @@ class PokemonInfoActivity : AppCompatActivity() {
 
     private fun showPokemonInfo(pokemonInfo: PokemonInfo) {
         pbPokemonInfo.turnGone()
+        rvPokemonStats.turnVisible()
 
         showAbilities(pokemonInfo)
         showTypes(pokemonInfo)
@@ -58,9 +58,16 @@ class PokemonInfoActivity : AppCompatActivity() {
         showHeight(pokemonInfo)
         showWeight(pokemonInfo)
         showPokemonImage()
+        showPokemonName(pokemonInfo)
+        configureStatsRecyclerView(pokemonInfo.stats)
+    }
+
+    private fun configureStatsRecyclerView(stats: List<Stats>){
+        rvPokemonStats.adapter = PokemonInfoAdapter(stats.toMutableList(), this)
     }
 
     private fun setLoading() {
+        rvPokemonStats.turnGone()
         pbPokemonInfo.turnVisible()
     }
 
@@ -134,6 +141,10 @@ class PokemonInfoActivity : AppCompatActivity() {
 
     private fun showPokemonImage() {
         showPokemonImage(getId(), imgPokemonArtwork, this)
+    }
+
+    private fun showPokemonName(pokemonInfo: PokemonInfo){
+        tvPokemonName.text = pokemonInfo.name.capitalize(Locale.getDefault())
     }
 
     private fun getId(): Int {

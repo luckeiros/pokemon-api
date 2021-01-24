@@ -12,7 +12,6 @@ import com.google.android.material.chip.Chip
 import com.lucasferreira.pokemonapi.Constants
 import com.lucasferreira.pokemonapi.R
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.pokemon_list_item.view.*
 
 
 fun View.turnVisible() {

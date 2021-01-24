@@ -13,7 +13,7 @@
     <string name="pokemon_image">Pokemon image</string>
 
     <!-- Toolbar -->
-    <string name="pokemon_info">Pokemon specifications</string>
+    <string name="pokemon_info">Pokemon details</string>
 
     <!-- General -->
     <string name="png_extension">.png</string>

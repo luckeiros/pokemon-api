@@ -52,33 +52,125 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/contentLayout"
             android:layout_width="match_parent"
+            android:background="@color/light_gray_color"
             android:layout_height="wrap_content">
 
             <ImageView
                 android:id="@+id/imgPokemonArtwork"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/medium_margin"
+                android:layout_marginTop="8dp"
                 android:contentDescription="@string/pokemon_image"
                 android:elevation="3dp"
                 android:src="@mipmap/ic_launcher"
                 app:layout_constraintEnd_toEndOf="@+id/cardInfoLayout"
                 app:layout_constraintStart_toStartOf="@+id/cardInfoLayout"
-                app:layout_constraintTop_toTopOf="@+id/cardInfoLayout" />
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvPokemonName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:elevation="3dp"
+                android:fontFamily="sans-serif-black"
+                android:textColor="@color/purple_color"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="@+id/imgPokemonArtwork"
+                app:layout_constraintStart_toStartOf="@+id/imgPokemonArtwork"
+                app:layout_constraintTop_toBottomOf="@+id/imgPokemonArtwork"
+                tools:text="Lucario" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/weightAndHeightLayout"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:elevation="3dp"
+                app:layout_constraintBottom_toTopOf="@+id/rvPokemonStats"
+                app:layout_constraintEnd_toEndOf="@+id/cardInfoLayout"
+                app:layout_constraintStart_toStartOf="@+id/rvPokemonStats"
+                app:layout_constraintTop_toBottomOf="@+id/tvPokemonName">
+
+                <TextView
+                    android:id="@+id/tvWeight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:elevation="3dp"
+                    android:fontFamily="sans-serif-black"
+                    android:text="18.35Kg "
+                    android:textColor="@color/yellow_color"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvWeightTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/match_constraint"
+                    android:elevation="3dp"
+                    android:text="WEIGHT"
+                    android:textColor="@color/purple_color"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="@+id/tvWeight"
+                    app:layout_constraintStart_toStartOf="@+id/tvWeight"
+                    app:layout_constraintTop_toBottomOf="@+id/tvWeight" />
+
+                <TextView
+                    android:id="@+id/tvHeight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:elevation="3dp"
+                    android:fontFamily="sans-serif-black"
+                    android:text="1.13m"
+                    android:textColor="@color/yellow_color"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tvWeight"
+                    app:layout_constraintTop_toTopOf="@+id/tvWeight" />
+
+                <TextView
+                    android:id="@+id/tvHeightTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/match_constraint"
+                    android:elevation="3dp"
+                    android:text="HEIGHT"
+                    android:textColor="@color/purple_color"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="@+id/tvHeight"
+                    app:layout_constraintStart_toStartOf="@+id/tvHeight"
+                    app:layout_constraintTop_toBottomOf="@+id/tvHeight" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvPokemonStats"
+                android:layout_width="@dimen/match_constraint"
+                android:layout_height="wrap_content"
+                android:clipToPadding="false"
+                android:elevation="3dp"
+                android:paddingStart="@dimen/small_margin"
+                android:paddingEnd="@dimen/small_margin"
+                android:paddingBottom="@dimen/medium_margin"
+                android:visibility="visible"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:layout_constraintBottom_toBottomOf="@+id/cardInfoLayout"
+                app:layout_constraintEnd_toEndOf="@+id/cardInfoLayout"
+                app:layout_constraintStart_toStartOf="@+id/cardInfoLayout"
+                app:spanCount="3"
+                tools:listitem="@layout/pokemon_stats_list_item" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardInfoLayout"
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
-                android:layout_marginStart="32dp"
+                android:layout_height="350dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="80dp"
+                android:layout_marginEnd="24dp"
                 android:elevation="2dp"
-                android:layout_marginTop="32dp"
-                android:layout_marginEnd="32dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-            </androidx.cardview.widget.CardView>
-
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ProgressBar
                 android:id="@+id/pbPokemonInfo"
@@ -95,11 +187,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/medium_margin"
+                app:cardBackgroundColor="@color/yellow_color"
                 app:cardElevation="2dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/cardInfoLayout"
-                tools:layout_editor_absoluteY="56dp">
+                app:layout_constraintStart_toStartOf="@+id/cardInfoLayout"
+                app:layout_constraintTop_toBottomOf="@id/cardInfoLayout">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -130,6 +222,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/medium_margin"
                 android:layout_marginTop="@dimen/large_margin"
+                app:cardBackgroundColor="@color/yellow_color"
                 app:cardElevation="2dp"
                 app:layout_constraintEnd_toEndOf="@+id/pokemonAbilitiesCard"
                 app:layout_constraintStart_toStartOf="@+id/pokemonAbilitiesCard"
@@ -164,6 +257,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/medium_margin"
                 android:layout_marginTop="@dimen/large_margin"
+                app:cardBackgroundColor="@color/yellow_color"
                 app:cardElevation="2dp"
                 app:layout_constraintEnd_toEndOf="@+id/pokemonTypesCard"
                 app:layout_constraintStart_toStartOf="@+id/pokemonTypesCard"
@@ -198,6 +292,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/medium_margin"
                 android:layout_marginTop="@dimen/large_margin"
+                app:cardBackgroundColor="@color/yellow_color"
                 app:cardElevation="2dp"
                 app:layout_constraintEnd_toEndOf="@+id/pokemonFormsCard"
                 app:layout_constraintStart_toStartOf="@+id/pokemonFormsCard"
@@ -232,7 +327,10 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/medium_margin"
                 android:layout_marginTop="@dimen/large_margin"
+                android:layout_marginBottom="16dp"
+                app:cardBackgroundColor="@color/yellow_color"
                 app:cardElevation="2dp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/pokemonHeightCard"
                 app:layout_constraintStart_toStartOf="@+id/pokemonHeightCard"
                 app:layout_constraintTop_toBottomOf="@+id/pokemonHeightCard">
