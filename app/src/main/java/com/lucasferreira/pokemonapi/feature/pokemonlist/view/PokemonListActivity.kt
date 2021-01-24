@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.lucasferreira.pokemonapi.R
 import com.lucasferreira.pokemonapi.extension.observe
+import com.lucasferreira.pokemonapi.extension.pokemonId
 import com.lucasferreira.pokemonapi.extension.turnGone
 import com.lucasferreira.pokemonapi.extension.turnVisible
 import com.lucasferreira.pokemonapi.feature.pokemoninfo.view.PokemonInfoActivity
@@ -67,7 +68,7 @@ class PokemonListActivity : AppCompatActivity() {
     }
 
     private fun showError() {
-        Toast.makeText(this, "Error on loading information", Toast.LENGTH_LONG).show()
+        Toast.makeText(this, resources.getString(R.string.error_message), Toast.LENGTH_LONG).show()
     }
 
     private fun showPokemons(pokemonList: List<Pokemon>) {
@@ -84,12 +85,10 @@ class PokemonListActivity : AppCompatActivity() {
     }
 
     private val onPokemonClickedListener: (Pokemon) -> Unit = {
-        val url = it.url.replace("v2", "")
-        id = url.filter { it.isDigit() }
-        openPokemonInfoActivity(id)
+        openPokemonInfoActivity(it.url.pokemonId())
     }
 
-    private fun openPokemonInfoActivity(id: String) {
+    private fun openPokemonInfoActivity(id: Int) {
         val intent = Intent(this, PokemonInfoActivity::class.java)
         intent.putExtra("id", id)
         startActivity(intent)

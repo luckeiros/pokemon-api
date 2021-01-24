@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.lucasferreira.pokemonapi.R
+import com.lucasferreira.pokemonapi.extension.pokemonId
 import com.lucasferreira.pokemonapi.extension.showPokemonImage
 import com.lucasferreira.pokemonapi.model.Pokemon
 import kotlinx.android.synthetic.main.pokemon_list_item.view.*
@@ -53,10 +54,7 @@ class PokemonListAdapter @Inject constructor(
         }
 
         fun getPokemonImage(pokemon: Pokemon) {
-            val url = pokemon.url.replace("v2", "")
-            val id = url.filter { it.isDigit() }
-
-            showPokemonImage(id.toInt(), itemView.imgPokemon, context)
+            showPokemonImage(pokemon.url.pokemonId(), itemView.imgPokemon, context)
         }
 
     }

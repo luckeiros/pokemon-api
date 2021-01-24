@@ -14,3 +14,7 @@ fun Int.formatKilogram() =
         decimalFormat().format(div(10f)) + "Kg"
     } else "${times(100)} g"
 
+fun String.pokemonId(): Int{
+    return this.replace("v2", "").filter { it.isDigit() }.toInt()
+}
+

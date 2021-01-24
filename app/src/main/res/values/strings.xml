@@ -17,4 +17,5 @@
 
     <!-- General -->
     <string name="png_extension">.png</string>
+    <string name="error_message">Error on loading information</string>
 </resources>

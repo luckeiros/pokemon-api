@@ -45,7 +45,7 @@ class PokemonInfoActivity : AppCompatActivity() {
     }
 
     private fun showError() {
-        Toast.makeText(this, "Error on loading information", Toast.LENGTH_LONG).show()
+        Toast.makeText(this, resources.getString(R.string.error_message), Toast.LENGTH_LONG).show()
     }
 
     private fun showPokemonInfo(pokemonInfo: PokemonInfo) {
@@ -130,8 +130,7 @@ class PokemonInfoActivity : AppCompatActivity() {
     }
 
     private fun getId(): Int {
-        val id = intent.getStringExtra("id").toString()
-        return id.toInt()
+        return intent.getIntExtra("id", 0)
     }
 
     private fun returnToPokemonListActivity() {
