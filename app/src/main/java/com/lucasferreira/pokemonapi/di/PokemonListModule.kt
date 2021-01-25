@@ -1,5 +1,6 @@
 package com.lucasferreira.pokemonapi.di
 
+import com.lucasferreira.pokemonapi.Constants
 import com.lucasferreira.pokemonapi.feature.pokemoninfo.repository.PokemonInfoRepository
 import com.lucasferreira.pokemonapi.feature.pokemonlist.repository.PokemonRepository
 import com.lucasferreira.pokemonapi.feature.pokemonlist.repository.PokemonRepositoryImpl
@@ -20,7 +21,7 @@ class PokemonListModule {
     @Singleton
     fun provideRetrofit(): Retrofit {
         return Retrofit.Builder()
-            .baseUrl(Endpoint.POKEMON_BASE_URL)
+            .baseUrl(Constants.POKEMON_BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
